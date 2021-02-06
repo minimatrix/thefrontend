@@ -5,7 +5,6 @@ import { useSchema } from './hooks';
 
 const Test = () => {
   const schema = useSchema();
-  console.log({ schema });
   return <div>hey</div>;
 };
 
