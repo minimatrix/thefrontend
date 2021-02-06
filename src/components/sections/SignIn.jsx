@@ -1,18 +1,15 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import {
-  Box,
-  Button,
-  Flex,
-  Image,
-  Heading,
-  Stack,
-  Text,
-  Input,
-} from '@chakra-ui/react';
+import React, { useState } from 'react';
+import { Button, Flex, Heading, Stack, Input } from '@chakra-ui/react';
+
+import { useLogin } from '../../hooks';
 
 export default function SignIn({ ...props }) {
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+  const { status, handleLogin } = useLogin();
+
+  const validateLoginForm = () => {};
+
   return (
     <Flex
       // align="center"
@@ -35,8 +32,20 @@ export default function SignIn({ ...props }) {
           Login
         </Heading>
 
-        <Input placeholder="Email" size="md" />
-        <Input placeholder="Password" size="md" isInvalid={true} />
+        <Input
+          placeholder="Email"
+          size="md"
+          value={email}
+          onChange={e => setEmail(e.target.value)}
+        />
+        <Input
+          placeholder="Password"
+          size="md"
+          type="password"
+          value={password}
+          isInvalid={true}
+          onChange={e => setPassword(e.target.value)}
+        />
 
         <Button
           size="md"
@@ -46,6 +55,7 @@ export default function SignIn({ ...props }) {
           _hover={{
             bg: ['primary.100', 'primary.100', 'primary.600', 'primary.600'],
           }}
+          onClick={() => email && password && handleLogin({ email, password })}
         >
           Login
         </Button>
