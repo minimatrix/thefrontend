@@ -36,6 +36,7 @@ const UnauthedApp = () => {
 const authReducer = (state, action) => {
   switch (action.type) {
     case 'update':
+      console.log({ action });
       localStorage.setItem('app_tokens', JSON.stringify(action.payload));
       return {
         ...state,
