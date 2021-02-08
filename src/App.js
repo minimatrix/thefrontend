@@ -1,8 +1,8 @@
 import React from 'react';
-import { AuthProvider } from '@contexts';
-import { SchemaProvider } from '@contexts';
-import { CMSLayout } from '@components/layouts';
-import { useSchema } from '@hooks';
+import { AuthProvider } from './contexts';
+import { SchemaProvider } from './contexts';
+import { CMSLayout } from './components/layouts';
+import { useSchema } from './hooks';
 
 export default function App() {
   let schema = {

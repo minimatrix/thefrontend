@@ -1,13 +1,7 @@
 import React from 'react';
-import {
-  Link,
-  Route,
-  BrowserRouter,
-  Switch,
-  useHistory,
-} from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { Box, Flex, Text, Button, VStack, Heading } from '@chakra-ui/react';
-import { useAuth } from '@hooks';
+import { useAuth } from '../../hooks';
 // import Logo from '../ui/Logo';
 
 const MenuItem = ({ to, ...props }) => {

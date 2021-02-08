@@ -2,9 +2,9 @@ import React, { useReducer } from 'react';
 import AuthContext from './AuthContext';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
-import Landing from '@pages/Landing';
-import Signup from '@pages/Signup';
-import Login from '@pages/Login';
+import Landing from '../pages/Landing';
+import Signup from '../pages/Signup';
+import Login from '../pages/Login';
 
 // import { ColorModeSwitcher } from './ColorModeSwitcher';
 

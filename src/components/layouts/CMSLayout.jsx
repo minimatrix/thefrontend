@@ -1,8 +1,9 @@
 import React from 'react';
 import { Flex, Box, Heading } from '@chakra-ui/react';
 import { Route, BrowserRouter, Switch } from 'react-router-dom';
-import SideNavigation from '@components/sections/SideNavigation';
-import { useResource } from '@hooks';
+import SideNavigation from '../../components/sections/SideNavigation';
+import { useResource } from '../../hooks';
+import { UsersIndex } from '../../models/Users';
 // import Footer from '../sections/Footer'; // will add this in the part 2
 
 export default function CMSLayout(props) {
@@ -24,9 +25,7 @@ export default function CMSLayout(props) {
           <Box p="5" bg="white">
             <Switch>
               <Route path="/users">
-                <Heading as="h3" size="md">
-                  Users
-                </Heading>
+                <UsersIndex />
               </Route>
               <Route path="/dashboard">
                 <div>

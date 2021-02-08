@@ -2,7 +2,7 @@ import { useState, useCallback } from 'react';
 import * as moment from 'moment';
 import axios from 'axios';
 
-import { useSchema, useAuth } from '@hooks';
+import { useSchema, useAuth } from '../hooks';
 
 const useLogin = () => {
   const [status, setStatus] = useState('OK');
