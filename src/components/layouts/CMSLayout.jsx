@@ -1,0 +1,44 @@
+import React from 'react';
+import { Flex, Box, Heading } from '@chakra-ui/react';
+import { Route, BrowserRouter, Switch } from 'react-router-dom';
+import SideNavigation from '@components/sections/SideNavigation';
+import { useResource } from '@hooks';
+// import Footer from '../sections/Footer'; // will add this in the part 2
+
+export default function CMSLayout(props) {
+  const { callAPI: fetchUsers } = useResource({ modelName: 'users' });
+
+  // fetchUsers({ method: 'get' });
+
+  return (
+    <Box bg="#EEF1F7" p="10">
+      <Flex direction="row" borderRadius="2xl" shadow="xl" bg="white">
+        <BrowserRouter>
+          <Box
+            as={SideNavigation}
+            shadow="xl"
+            bg="#0146FD"
+            borderLeftRadius="xl"
+            pt="5"
+          />
+          <Box p="5" bg="white">
+            <Switch>
+              <Route path="/users">
+                <Heading as="h3" size="md">
+                  Users
+                </Heading>
+              </Route>
+              <Route path="/dashboard">
+                <div>
+                  <Heading as="h3" size="md">
+                    Dashboard
+                  </Heading>
+                </div>
+              </Route>
+            </Switch>
+          </Box>
+        </BrowserRouter>
+      </Flex>
+    </Box>
+  );
+}
