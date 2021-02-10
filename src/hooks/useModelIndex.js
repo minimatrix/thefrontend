@@ -4,7 +4,7 @@ import axios from 'axios';
 
 const useModelIndex = ({ modelName, params }) => {
   const { status, performAPICall } = useAPICall({ axios });
-  const [response, setResponse] = useState({ data: [], meta: {} });
+  const [response, setResponse] = useState([]);
   const previousParams = usePrevious(params);
 
   const fetchData = () =>
@@ -26,8 +26,7 @@ const useModelIndex = ({ modelName, params }) => {
   const refetch = fetchData;
 
   return {
-    data: response.data,
-    meta: response.meta,
+    data: response,
     status,
     refetch,
   };

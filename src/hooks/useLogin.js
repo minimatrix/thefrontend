@@ -18,7 +18,7 @@ const useLogin = () => {
 
     try {
       const response = await axios({
-        url: `http://${schema.env.REACT_APP_API_URL}/login`,
+        url: `${schema.env.REACT_APP_API_URL}/login`,
         method: 'post',
         headers: {
           Accept: 'application/json',

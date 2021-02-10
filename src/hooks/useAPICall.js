@@ -2,21 +2,17 @@ import { useState } from 'react';
 import { useSchema, useAxiosWrapper } from '../hooks';
 
 const useAPICall = ({ axios } = {}) => {
-  const axiosRefresh = useAxiosWrapper();
+  const axiosWrapper = useAxiosWrapper();
 
   const schema = useSchema();
   const baseUrl = schema.env.REACT_APP_API_URL;
   const [status, setStatus] = useState('OK');
 
   const performAPICall = ({ method, path, data, callback }) => {
-    const dataForSubmission = {
-      ...data,
-    };
-
-    return axios({
+    return axiosWrapper({
       url: `${baseUrl}/api/${path}`,
       method,
-      [method == 'get' ? 'params' : 'data']: dataForSubmission,
+      [method == 'get' ? 'params' : 'data']: data,
     })
       .then(response => {
         callback && callback(response);

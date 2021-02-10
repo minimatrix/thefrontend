@@ -1,16 +1,17 @@
 import React from 'react';
 import useUsers from '../hooks/useUsers';
+import IndexTable from '../../../components/ui/IndexTable';
 
 const UsersIndex = () => {
   const { users } = useUsers();
 
   return (
     <>
-      {users &&
+      <IndexTable data={users} fields={[]} />
+      {/* {users &&
         users.map(user => {
-          console.log({ user });
-          return <div>users</div>;
-        })}
+          return <div>{user.first_name}</div>;
+        })} */}
     </>
   );
 };

@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useModelIndex } from '../../../hooks';
 
 const useUsers = () => {
   const [users, setUsers] = useState([]);
-  // const [user, setUser] = useState({});
 
   const { data, meta, status, refetch } = useModelIndex({
     modelName: 'users',
@@ -11,18 +10,20 @@ const useUsers = () => {
   });
 
   const fetchUsersIndex = () => {
-    setUsers(data);
+    refetch();
   };
 
-  // const fetchUser = () => {
-  //   setUser();
-  // };
+  useEffect(() => {
+    fetchUsersIndex();
+  }, []);
+
+  useEffect(() => {
+    setUsers(data);
+  }, [data]);
 
   return {
     users,
-    // user,
     fetchUsersIndex,
-    // fetchUser,
   };
 };
 
