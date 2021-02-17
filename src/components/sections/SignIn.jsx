@@ -35,6 +35,7 @@ export default function SignIn({ ...props }) {
         <Input
           placeholder="Email"
           size="md"
+          autoComplete={'off'}
           value={email}
           onChange={e => setEmail(e.target.value)}
         />
