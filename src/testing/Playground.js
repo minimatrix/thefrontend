@@ -11,7 +11,7 @@ import {
 
 export default function LandingLayout(props) {
   return (
-    <Flex direction="column" maxW={{ xl: '1200px' }} m="0 auto" {...props}>
+    <Flex direction="column" m="0 auto" {...props}>
       <Box bg="red.500" minH="90px">
         ss
       </Box>

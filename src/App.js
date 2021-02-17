@@ -1,12 +1,8 @@
 import React from 'react';
-import AuthProvider from './contexts/AuthProvider';
+import { AuthProvider } from './contexts';
 import { SchemaProvider } from './contexts';
+import { CMSLayout } from './components/layouts';
 import { useSchema } from './hooks';
-
-const Test = () => {
-  const schema = useSchema();
-  return <div>hey</div>;
-};
 
 export default function App() {
   let schema = {
@@ -22,9 +18,8 @@ export default function App() {
 
   return (
     <SchemaProvider value={schema}>
-      <Test />
       <AuthProvider schema={schema.auth}>
-        <div>Authenticated :)</div>
+        <CMSLayout />
       </AuthProvider>
     </SchemaProvider>
   );

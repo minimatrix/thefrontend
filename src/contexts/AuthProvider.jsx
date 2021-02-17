@@ -5,7 +5,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Landing from '../pages/Landing';
 import Signup from '../pages/Signup';
 import Login from '../pages/Login';
-import Playground from '../testing/Playground';
+import HowItWorks from '../pages/HowItWorks';
 
 // import { ColorModeSwitcher } from './ColorModeSwitcher';
 
@@ -15,14 +15,14 @@ const UnauthedApp = () => {
   return (
     <BrowserRouter>
       <Switch>
+        <Route path="/how">
+          <HowItWorks />
+        </Route>
         <Route path="/signup">
           <Signup />
         </Route>
         <Route path="/login">
           <Login />
-        </Route>
-        <Route path="/playground">
-          <Playground />
         </Route>
         <Route path="/">
           {/* <ColorModeSwitcher justifySelf="flex-end" /> */}
@@ -41,11 +41,9 @@ const authReducer = (state, action) => {
         ...state,
         ...action.payload,
       };
-
     case 'clear':
       localStorage.removeItem('app_tokens');
       return {};
-
     default:
       return state;
   }
@@ -53,7 +51,7 @@ const authReducer = (state, action) => {
 
 const AuthProvider = ({ children, schema, ...props }) => {
   const [state, dispatch] = useReducer(authReducer, authToken ? authToken : {});
-  console.log({ state });
+
   return (
     <AuthContext.Provider value={{ state, dispatch, schema }}>
       {state.token ? children : <UnauthedApp {...props} />}

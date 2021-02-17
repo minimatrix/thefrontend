@@ -1,41 +1,44 @@
 import { useState, useCallback } from 'react';
+
 import * as moment from 'moment';
 import axios from 'axios';
 
 import { useSchema, useAuth } from '../hooks';
 
-const useLogin = () => {
+const useResource = ({ modelName, ...props }) => {
   const [status, setStatus] = useState('OK');
   const [error, setError] = useState();
-  const { dispatch } = useAuth();
+  const [result, setResult] = useState({});
 
+  const auth = useAuth();
+
+  const token = auth.state.token;
   const schema = useSchema();
 
-  const handleLogin = async ({ email, password }) => {
-    // console.log({ email, password });
+  const callAPI = async ({ id, method, data, ...props }) => {
     setStatus('LOADING');
-    const credentials = { email, password };
+
+    const baseUrl = `http://${schema.env.REACT_APP_API_URL}/api`;
+
+    // if an ID is supplied then add it to the api path (for everything other than index fetching)
+    const url = id
+      ? `${baseUrl}/${modelName}/${id}`
+      : `${baseUrl}/${modelName}`;
 
     try {
       const response = await axios({
-        url: `${schema.env.REACT_APP_API_URL}/login`,
-        method: 'post',
+        url,
+        method,
         headers: {
+          Authorization: `Bearer ${token}`,
           Accept: 'application/json',
         },
-        data: credentials,
+        data,
       });
 
       if (response !== undefined) {
         const payload = response.data;
-        // var now = moment();
-        // payload.expires_at = now.add(payload.expires_in, 's').format('X'); // X is unix timestamp
-
         setStatus('OK');
-        dispatch({
-          type: 'update',
-          payload,
-        });
       }
     } catch (e) {
       console.log({ err: e.message });
@@ -46,9 +49,10 @@ const useLogin = () => {
   };
 
   return {
-    handleLogin,
+    callAPI,
+    result,
     status,
   };
 };
 
-export default useLogin;
+export default useResource;
