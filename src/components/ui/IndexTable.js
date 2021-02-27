@@ -12,9 +12,7 @@ import {
   Heading,
 } from '@chakra-ui/react';
 
-const IndexTable = ({ data }) => {
-  const fields = data && data.length > 0 && Object.keys(data[0]);
-
+const IndexTable = ({ dataRows, headings, ...props }) => {
   return (
     <Box>
       <Heading as="h3" size="md">
@@ -23,15 +21,15 @@ const IndexTable = ({ data }) => {
       <Box as={Table} size="sm" variant="striped" marginTop={5}>
         <Thead>
           <Tr>
-            {fields &&
-              fields.map(field => {
-                return <Th>{field}</Th>;
+            {headings &&
+              headings.map(heading => {
+                return <Th>{heading}</Th>;
               })}
           </Tr>
         </Thead>
         <Tbody>
-          {data &&
-            Object.values(data).map(dataRow => {
+          {dataRows &&
+            dataRows.map(dataRow => {
               return (
                 <Tr>
                   {Object.values(dataRow).map(record => (

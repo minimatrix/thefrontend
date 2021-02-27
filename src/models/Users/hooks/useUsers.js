@@ -1,29 +1,48 @@
 import React, { useState, useEffect } from 'react';
-import { useModelIndex } from '../../../hooks';
+import { useModelIndex, useModel } from '../../../hooks';
 
 const useUsers = () => {
   const [users, setUsers] = useState([]);
 
-  const { data, meta, status, refetch } = useModelIndex({
+  const {
+    data,
+    pagination,
+    success,
+    status,
+    refetch: refetchIndex,
+  } = useModelIndex({
     modelName: 'users',
     params: {},
   });
 
+  const {
+    status: createStatus,
+    refetch: refetchModel,
+    createModelInstance,
+    model,
+  } = useModel({
+    modelName: 'users',
+  });
+
   const fetchUsersIndex = () => {
-    refetch();
+    refetchIndex();
+  };
+
+  const createUser = async ({ inputs, ...props }) => {
+    await createModelInstance({ inputs });
   };
 
   useEffect(() => {
     fetchUsersIndex();
   }, []);
 
-  useEffect(() => {
-    setUsers(data);
-  }, [data]);
-
   return {
-    users,
+    users: data,
+    pagination,
     fetchUsersIndex,
+    refetchIndex,
+    createUser,
+    createStatus,
   };
 };
 

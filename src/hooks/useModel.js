@@ -2,50 +2,48 @@ import { useState, useEffect } from 'react';
 import { usePrevious, useAPICall } from '../hooks';
 import axios from 'axios';
 
-const useModelIndex = ({ modelName, params }) => {
+const useModel = ({ modelName }) => {
   const { status, performAPICall } = useAPICall({ axios });
   const [response, setResponse] = useState({});
   const [message, setMessage] = useState('');
   const [success, setSuccess] = useState();
-  const [data, setData] = useState();
-  const [pagination, setPagination] = useState({});
-  const previousParams = usePrevious(params);
+  const [model, setModel] = useState();
 
-  const fetchData = () =>
+  const getModelInstance = ({ id }) =>
     performAPICall({
       method: 'get',
-      path: modelName,
-      params,
+      path: `${modelName}/${id}`,
+      callback: response => {
+        setResponse(response.data);
+      },
+    });
+
+  const createModelInstance = ({ inputs }) =>
+    performAPICall({
+      method: 'post',
+      path: `${modelName}`,
+      data: inputs,
       callback: response => {
         setResponse(response.data);
       },
     });
 
   useEffect(() => {
-    if (JSON.stringify(params) !== JSON.stringify(previousParams)) {
-      fetchData();
-    }
-  }, [modelName, JSON.stringify(params)]);
-
-  const refetch = fetchData;
-
-  useEffect(() => {
     const { data, message, success } = response;
     const { data: outputData, ...others } = data ?? {};
-    setPagination(others);
-    setData(outputData);
+    setModel(outputData);
     setMessage(message);
     setSuccess(success);
   }, [response]);
 
   return {
-    data,
+    getModelInstance,
+    createModelInstance,
+    model,
     message,
     success,
-    pagination,
     status,
-    refetch,
   };
 };
 
-export default useModelIndex;
+export default useModel;
