@@ -41,7 +41,7 @@ const UsersIndex = () => {
 
   return (
     <>
-      <Box flex justifyContent="flex-end">
+      <Box d="flex" justifyContent="flex-end">
         <Button onClick={onOpen}>Create User</Button>
       </Box>
       <IndexTable dataRows={dataRows} headings={headings} />
