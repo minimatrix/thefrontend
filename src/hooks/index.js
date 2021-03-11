@@ -7,3 +7,4 @@ export { default as useModelIndex } from './useModelIndex';
 export { default as useModel } from './useModel';
 export { default as usePrevious } from './usePrevious';
 export { default as useAxiosWrapper } from './useAxiosWrapper';
+export { default as useInputField } from './useInputField';

@@ -4,6 +4,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import Landing from '../pages/Landing';
 import Signup from '../pages/Signup';
+import Features from '../pages/Features';
 import Login from '../pages/Login';
 import HowItWorks from '../pages/HowItWorks';
 
@@ -23,6 +24,9 @@ const UnauthedApp = () => {
         </Route>
         <Route path="/login">
           <Login />
+        </Route>
+        <Route path="/features">
+          <Features />
         </Route>
         <Route path="/">
           {/* <ColorModeSwitcher justifySelf="flex-end" /> */}

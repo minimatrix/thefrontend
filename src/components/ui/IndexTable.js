@@ -12,7 +12,16 @@ import {
   Heading,
 } from '@chakra-ui/react';
 
-const IndexTable = ({ dataRows, headings, ...props }) => {
+import { Link } from 'react-router-dom';
+
+const IndexTable = ({
+  dataRows,
+  headings,
+  linkField,
+  linkParam,
+  route,
+  ...props
+}) => {
   return (
     <Box>
       <Heading as="h3" size="md">
@@ -32,9 +41,21 @@ const IndexTable = ({ dataRows, headings, ...props }) => {
             dataRows.map(dataRow => {
               return (
                 <Tr>
-                  {Object.values(dataRow).map(record => (
-                    <Td>{record}</Td>
-                  ))}
+                  {Object.keys(dataRow).map(key => {
+                    return (
+                      key !== 'id' && (
+                        <Td>
+                          {dataRow[linkParam] ? (
+                            <Link
+                              to={`/${route}/${dataRow[linkParam]}`}
+                            >{`${dataRow[key]}`}</Link>
+                          ) : (
+                            `${dataRow[key]}`
+                          )}
+                        </Td>
+                      )
+                    );
+                  })}
                 </Tr>
               );
             })}

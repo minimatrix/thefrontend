@@ -14,18 +14,23 @@ export default function CMSLayout(props) {
         </Flex>
         <Flex direction="row" borderRadius="2xl" shadow="xl" bg="white" mx={10}>
           <BrowserRouter>
-            <Box
-              as={SideNavigation}
-              shadow="xl"
-              bg="#0146FD"
-              borderLeftRadius="xl"
-              pt="5"
-            />
+            <Box as={SideNavigation} shadow="xl" borderLeftRadius="xl" pt="5" />
             <Box p="5" bg="white" width="100%" borderRightRadius="xl">
               <Switch>
                 <Route path="/users">
-                  <UsersIndex />
+                  <Switch>
+                    <Route path={`/users/:id`}>
+                      {navigation => {
+                        const { id } = navigation.match.params;
+                        return <>{id}</>;
+                      }}
+                    </Route>
+                    <Route>
+                      <UsersIndex />
+                    </Route>
+                  </Switch>
                 </Route>
+
                 <Route path="/dashboard">
                   <div>
                     <Heading as="h3" size="md">

@@ -9,7 +9,7 @@ export default function Landing() {
       <Hero
         title="Agile Customer Feedback"
         subtitle="Allow your customers to leave feedback and easily report bugs on any element of your React application at the click of a button."
-        image="https://source.unsplash.com/800x600/?coding"
+        image="https://source.unsplash.com/800x600/?audit"
         ctaText="Create your account now"
         ctaLink="/signup"
       />
