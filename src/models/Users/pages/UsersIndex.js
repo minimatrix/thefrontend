@@ -4,21 +4,7 @@ import useInputField from '../../../hooks/useInputField';
 import IndexTable from '../../../components/ui/IndexTable';
 import InputField from '../../../components/inputs/InputField';
 import validateInputs from '../../../utils/helpers/validateInputs';
-import {
-  Button,
-  Drawer,
-  DrawerBody,
-  DrawerCloseButton,
-  DrawerContent,
-  DrawerOverlay,
-  DrawerHeader,
-  DrawerFooter,
-  Stack,
-  Box,
-  FormLabel,
-  Input,
-  useDisclosure,
-} from '@chakra-ui/react';
+import { Button, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerOverlay, DrawerHeader, DrawerFooter, Stack, Box, FormLabel, Input, useDisclosure } from '@chakra-ui/react';
 
 import moment from 'moment';
 
@@ -72,8 +58,6 @@ const UsersIndex = () => {
       };
     });
 
-  const firstNameRef = useRef();
-
   return (
     <>
       <Box d="flex" justifyContent="flex-end">
@@ -81,30 +65,17 @@ const UsersIndex = () => {
           Create User
         </Button>
       </Box>
-      <IndexTable
-        dataRows={dataRows}
-        headings={headings}
-        linkField="name"
-        linkParam="id"
-        route="users"
-      />
+      <IndexTable dataRows={dataRows} headings={headings} linkField="name" linkParam="id" route="users" />
 
-      <Drawer
-        isOpen={isOpen}
-        placement="right"
-        initialFocusRef={firstNameRef}
-        onClose={onClose}
-      >
+      <Drawer isOpen={isOpen} placement="right" initialFocusRef={firstNameInput.inputRef} onClose={onClose}>
         <DrawerOverlay>
           <DrawerContent>
             <DrawerCloseButton />
-            <DrawerHeader borderBottomWidth="1px">
-              Create a new user
-            </DrawerHeader>
+            <DrawerHeader borderBottomWidth="1px">Create a new user</DrawerHeader>
 
             <DrawerBody>
               <Stack spacing="24px">
-                <InputField ref={firstNameRef} {...firstNameInput} />
+                <InputField {...firstNameInput} />
                 <InputField {...lastNameInput} />
                 <InputField {...emailInput} />
               </Stack>
@@ -116,22 +87,7 @@ const UsersIndex = () => {
               </Button>
               <Button
                 onClick={() => {
-                  console.log({
-                    fn: {
-                      v: firstNameInput.value,
-                      valid: firstNameInput.validate(),
-                    },
-                    ln: {
-                      v: lastNameInput.value,
-                      valid: lastNameInput.validate(),
-                    },
-                    e: { v: emailInput.value, valid: emailInput.validate() },
-                  });
-                  if (
-                    !firstNameInput.isInvalid &&
-                    !lastNameInput.isInvalid &&
-                    !emailInput.isInvalid
-                  ) {
+                  if (!firstNameInput.isInvalid && !lastNameInput.isInvalid && !emailInput.isInvalid) {
                     createUser({
                       inputs: {
                         first_name: firstNameInput.value,

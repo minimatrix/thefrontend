@@ -38,7 +38,7 @@ const useLogin = () => {
         });
       }
     } catch (e) {
-      console.log({ err: e.message });
+      // console.log({ err: e.message });
       const error = e.response;
       setError(error);
       setStatus('ERROR');

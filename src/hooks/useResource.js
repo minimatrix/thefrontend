@@ -21,9 +21,7 @@ const useResource = ({ modelName, ...props }) => {
     const baseUrl = `http://${schema.env.REACT_APP_API_URL}/api`;
 
     // if an ID is supplied then add it to the api path (for everything other than index fetching)
-    const url = id
-      ? `${baseUrl}/${modelName}/${id}`
-      : `${baseUrl}/${modelName}`;
+    const url = id ? `${baseUrl}/${modelName}/${id}` : `${baseUrl}/${modelName}`;
 
     try {
       const response = await axios({
@@ -41,7 +39,7 @@ const useResource = ({ modelName, ...props }) => {
         setStatus('OK');
       }
     } catch (e) {
-      console.log({ err: e.message });
+      // console.log({ err: e.message });
       const error = e.response;
       setError(error);
       setStatus('ERROR');

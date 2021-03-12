@@ -21,11 +21,7 @@ const Features = () => {
     form
   );
 
-  // const customForm = { fields: [workflowsInput] };
-
-  // const { form, renderFields } = useBuildForm({ config: customForm });
-
-  console.log({ form });
+  // console.log({ form });
 
   return (
     <LandingLayout>

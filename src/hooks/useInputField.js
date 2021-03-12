@@ -1,17 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 
-const useInputField = ({
-  label,
-  defaultValue = undefined,
-  type,
-  validationRules = [],
-  customValidator,
-  ...props
-}) => {
+const useInputField = ({ label, defaultValue = undefined, type, validationRules = [], customValidator, ...props }) => {
   const [value, setValue] = useState(defaultValue);
   const [errors, setErrors] = useState([]);
   const [isInvalid, setIsInvalid] = useState(false);
   const [isRequired, setIsRequired] = useState(false);
+  const inputRef = useRef();
   const onChange = e => {
     setValue(e.target.value);
   };
@@ -33,8 +27,7 @@ const useInputField = ({
 
   const addError = errorMessage => {
     const newErrors = errors;
-    errors.filter(e => e == errorMessage).length < 1 &&
-      newErrors.push(errorMessage);
+    errors.filter(e => e == errorMessage).length < 1 && newErrors.push(errorMessage);
 
     setErrors([...newErrors]);
   };
@@ -58,10 +51,8 @@ const useInputField = ({
         break;
 
       case 'email':
-        var pattern = new RegExp(
-          /^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i
-        );
-        typeValidation = pattern.test(value);
+        var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
+        typeValidation = value !== undefined ? pattern.test(value) : true;
         if (!typeValidation) {
           addError('Value must be a valid email address');
         }
@@ -69,13 +60,7 @@ const useInputField = ({
         break;
 
       case 'boolean':
-        typeValidation =
-          value == true ||
-          value == false ||
-          value == 1 ||
-          value == 0 ||
-          value == 'true' ||
-          value == 'false';
+        typeValidation = value == true || value == false || value == 1 || value == 0 || value == 'true' || value == 'false';
         break;
 
       case 'date':
@@ -92,7 +77,7 @@ const useInputField = ({
           if (!isValid) {
             addError('This value is required');
           }
-          console.log({ isValid });
+          //   console.log({ isValid });
           break;
 
         case 'isNumeric':
@@ -143,15 +128,8 @@ const useInputField = ({
 
     // check if there are any validationRules or customValidator that return false
     // if so then the validation has failed
-    console.log({ validationRuleResults });
-    const valid =
-      validationRuleResults.filter(
-        validationResult => validationResult == false
-      ).length >
-        0 !==
-        true &&
-      customValidationResult !== false &&
-      typeValidation !== false;
+
+    const valid = validationRuleResults.filter(validationResult => validationResult == false).length > 0 !== true && customValidationResult !== false && typeValidation !== false;
 
     setIsInvalid(valid ? false : true);
     return valid;
@@ -167,6 +145,7 @@ const useInputField = ({
     isInvalid,
     errors,
     isRequired,
+    inputRef,
     ...props,
   };
 };
