@@ -6,6 +6,7 @@ const useInputField = ({ label, defaultValue = undefined, type, validationRules 
   const [isInvalid, setIsInvalid] = useState(false);
   const [isRequired, setIsRequired] = useState(false);
   const inputRef = useRef();
+
   const onChange = e => {
     setValue(e.target.value);
   };
@@ -36,6 +37,8 @@ const useInputField = ({ label, defaultValue = undefined, type, validationRules 
     //check the value type matches
     setErrors([]);
 
+    let validationOutcomes = [];
+
     let typeValidation = true;
 
     switch (type) {
@@ -44,81 +47,90 @@ const useInputField = ({ label, defaultValue = undefined, type, validationRules 
 
         break;
       case 'number':
-        typeValidation = value.match(/^[0-9]+$/);
-        if (!typeValidation) {
+        const numberValidation = value.match(/^[0-9]+$/);
+        if (!numberValidation) {
           addError('Value must be numeric');
         }
+        validationOutcomes.push(numberValidation);
         break;
 
       case 'email':
         var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
-        typeValidation = value !== undefined ? pattern.test(value) : true;
-        if (!typeValidation) {
+        const emailValidation = pattern.test(value);
+        if (!emailValidation) {
           addError('Value must be a valid email address');
         }
+        validationOutcomes.push(emailValidation);
 
         break;
 
       case 'boolean':
-        typeValidation = value == true || value == false || value == 1 || value == 0 || value == 'true' || value == 'false';
+        const booleanValidation = value == true || value == false || value == 1 || value == 0 || value == 'true' || value == 'false';
+        validationOutcomes.push(booleanValidation);
         break;
 
       case 'date':
       default:
-        // no validation
-        typeValidation = true;
+      // no validation
     }
 
-    const validationRuleResults = validationRules.map(rule => {
-      let isValid;
+    validationRules.map(rule => {
       switch (rule.type) {
         case 'required':
-          isValid = value !== '' && value !== undefined;
-          if (!isValid) {
+          const requiredResult = value !== '' && value !== undefined;
+          if (!requiredResult) {
             addError('This value is required');
           }
-          //   console.log({ isValid });
+          setIsRequired(true);
+          validationOutcomes.push(requiredResult);
           break;
 
         case 'isNumeric':
-          isValid = value.match(/^[0-9]+$/);
-          if (!isValid) {
+          const isNumericResult = value.match(/^[0-9]+$/);
+          if (!isNumericResult) {
             addError('This value must be numeric');
           }
+          validationOutcomes.push(isNumericResult);
           break;
 
         case 'isAlpha':
-          isValid = value.match(/^[a-zA-Z]+$/);
-          if (!isValid) {
+          const isAlphaResult = value.match(/^[a-zA-Z]+$/);
+          if (!isAlphaResult) {
             addError('This value must be alphanumeric only');
           }
+          validationOutcomes.push(isAlphaResult);
           break;
 
         case 'isAlphaNumeric':
-          isValid = value.match(/^[0-9a-zA-Z]+$/);
-          if (!isValid) {
+          const isAlphaNumericResult = value.match(/^[0-9a-zA-Z]+$/);
+          if (!isAlphaNumericResult) {
             addError('This value must be alphanumeric only');
           }
+          validationOutcomes.push(isAlphaNumericResult);
           break;
 
         case 'min':
-          isValid = value >= rule.value;
-          if (!isValid) {
+          const minResult = value >= rule.value;
+          if (!minResult) {
             addError(`This value must be greater than ${rule.value}`);
           }
+          validationOutcomes.push(minResult);
           break;
+
         case 'max':
-          isValid = value <= rule.value;
-          if (!isValid) {
+          const maxResult = value <= rule.value;
+          if (!maxResult) {
             addError(`This value must be less than ${rule.value}`);
           }
+          validationOutcomes.push(maxResult);
           break;
 
         case 'isUppercase':
-          isValid = value.match(/^[A-Z]+$/);
-          if (!isValid) {
+          const isUppercaseResult = value.match(/^[A-Z]+$/);
+          if (!isUppercaseResult) {
             addError(`This value must be uppercase`);
           }
+          validationOutcomes.push(isUppercaseResult);
           break;
       }
     });
@@ -129,9 +141,10 @@ const useInputField = ({ label, defaultValue = undefined, type, validationRules 
     // check if there are any validationRules or customValidator that return false
     // if so then the validation has failed
 
-    const valid = validationRuleResults.filter(validationResult => validationResult == false).length > 0 !== true && customValidationResult !== false && typeValidation !== false;
+    const valid = validationOutcomes.filter(validationResult => validationResult == false).length > 0 !== true && customValidationResult !== false && typeValidation !== false;
 
     setIsInvalid(valid ? false : true);
+
     return valid;
   };
 
@@ -141,7 +154,7 @@ const useInputField = ({ label, defaultValue = undefined, type, validationRules 
     onChange,
     onBlur,
     type,
-    validate,
+    validate: () => validate(true),
     isInvalid,
     errors,
     isRequired,

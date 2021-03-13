@@ -87,7 +87,14 @@ const UsersIndex = () => {
               </Button>
               <Button
                 onClick={() => {
-                  if (!firstNameInput.isInvalid && !lastNameInput.isInvalid && !emailInput.isInvalid) {
+                  const formIsValid =
+                    [firstNameInput, lastNameInput, emailInput]
+                      .map(input => {
+                        return input.validate();
+                      })
+                      .filter(result => result == false).length < 1;
+
+                  if (formIsValid) {
                     createUser({
                       inputs: {
                         first_name: firstNameInput.value,

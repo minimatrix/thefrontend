@@ -9,7 +9,7 @@ const InputError = ({ message }) => {
   );
 };
 
-const InputField = ({ errors, label, name, placeholder, isRequired, inputRef, ...inputFieldProps }) => {
+const InputField = ({ errors, label, name, placeholder, isRequired, inputRef, isInvalid, initialRender, ...inputFieldProps }) => {
   return (
     <Box>
       <FormLabel htmlFor={name}>
@@ -20,7 +20,7 @@ const InputField = ({ errors, label, name, placeholder, isRequired, inputRef, ..
           </Text>
         )}
       </FormLabel>
-      <Input ref={inputRef} name={name} placeholder={placeholder ? placeholder : label} {...inputFieldProps} />
+      <Input ref={inputRef} name={name} placeholder={placeholder ? placeholder : label} isInvalid={isInvalid} {...inputFieldProps} />
       <Box mt={1}>
         {errors &&
           errors.map(e => {
