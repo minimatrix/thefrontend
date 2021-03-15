@@ -4,23 +4,12 @@ import { useModelIndex, useModel } from '../../../hooks';
 const useUsers = () => {
   const [users, setUsers] = useState([]);
 
-  const {
-    data,
-    pagination,
-    success,
-    status,
-    refetch: refetchIndex,
-  } = useModelIndex({
+  const { data, pagination, success, status, refetch: refetchIndex } = useModelIndex({
     modelName: 'users',
     params: {},
   });
 
-  const {
-    status: createStatus,
-    refetch: refetchModel,
-    createModelInstance,
-    model,
-  } = useModel({
+  const { status: createStatus, refetch: refetchModel, createModelInstance, model } = useModel({
     modelName: 'users',
   });
 
@@ -40,7 +29,7 @@ const useUsers = () => {
     users: data,
     pagination,
     fetchUsersIndex,
-    refetchIndex,
+    refetchIndex: page => refetchIndex(page),
     createUser,
     createStatus,
   };

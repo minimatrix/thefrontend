@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { usePrevious, useAPICall } from '../hooks';
 import axios from 'axios';
 
@@ -11,15 +11,17 @@ const useModelIndex = ({ modelName, params }) => {
   const [pagination, setPagination] = useState({});
   const previousParams = usePrevious(params);
 
-  const fetchData = () =>
+  const fetchData = (page = 1) => {
+    console.log({ page });
     performAPICall({
       method: 'get',
       path: modelName,
-      params,
+      data: { ...params, page: page },
       callback: response => {
         setResponse(response.data);
       },
     });
+  };
 
   useEffect(() => {
     if (JSON.stringify(params) !== JSON.stringify(previousParams)) {
@@ -27,7 +29,7 @@ const useModelIndex = ({ modelName, params }) => {
     }
   }, [modelName, JSON.stringify(params)]);
 
-  const refetch = fetchData;
+  const refetch = page => fetchData(page);
 
   useEffect(() => {
     const { data, message, success } = response;

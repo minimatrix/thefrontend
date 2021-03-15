@@ -2,7 +2,7 @@ import React from 'react';
 import { Flex, Box, Heading } from '@chakra-ui/react';
 import { Route, BrowserRouter, Switch } from 'react-router-dom';
 import SideNavigation from '../../components/sections/SideNavigation';
-import { UsersIndex } from '../../models/Users';
+import { UsersIndex, UsersShow } from '../../models/Users';
 
 export default function CMSLayout(props) {
   return (
@@ -22,7 +22,7 @@ export default function CMSLayout(props) {
                     <Route path={`/users/:id`}>
                       {navigation => {
                         const { id } = navigation.match.params;
-                        return <>{id}</>;
+                        return <UsersShow id={id} />;
                       }}
                     </Route>
                     <Route>

@@ -28,17 +28,26 @@ const useModel = ({ modelName }) => {
       },
     });
 
+  const updateModelInstance = ({ id, data }) =>
+    performAPICall({
+      method: 'put',
+      path: `${modelName}/${id}`,
+      data,
+      callback: response => {
+        setResponse(response.data);
+      },
+    });
+
   useEffect(() => {
-    const { data, message, success } = response;
-    const { data: outputData, ...others } = data ?? {};
-    setModel(outputData);
-    setMessage(message);
-    setSuccess(success);
+    setModel(response);
   }, [response]);
+
+  console.log({ model });
 
   return {
     getModelInstance,
     createModelInstance,
+    updateModelInstance,
     model,
     message,
     success,

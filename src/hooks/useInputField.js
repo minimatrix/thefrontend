@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 
 const useInputField = ({ label, defaultValue = undefined, type, validationRules = [], customValidator, ...props }) => {
+  console.log({ defaultValue });
   const [value, setValue] = useState(defaultValue);
   const [errors, setErrors] = useState([]);
   const [isInvalid, setIsInvalid] = useState(false);
@@ -14,6 +15,10 @@ const useInputField = ({ label, defaultValue = undefined, type, validationRules 
   const onBlur = () => {
     validate();
   };
+
+  useEffect(() => {
+    setValue(defaultValue);
+  }, [defaultValue]);
 
   // set value on change
   useEffect(() => {
@@ -151,6 +156,7 @@ const useInputField = ({ label, defaultValue = undefined, type, validationRules 
   return {
     label,
     value,
+    defaultValue,
     onChange,
     onBlur,
     type,
