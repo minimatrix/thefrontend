@@ -1,27 +1,26 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
-
-import Landing from './pages/Landing';
-import Signup from './pages/Signup';
-import Login from './pages/Login';
-
-import { ColorModeSwitcher } from './ColorModeSwitcher';
+import { AuthProvider } from './contexts';
+import { SchemaProvider } from './contexts';
+import { CMSLayout } from './components/layouts';
+import { useSchema } from './hooks';
 
 export default function App() {
+  let schema = {
+    auth: {
+      permissionCheckInterval: 60000,
+    },
+  };
+
+  schema.env = Object.keys(process.env).reduce((acc, val) => {
+    acc[val] = process.env[val];
+    return acc;
+  }, {});
+
   return (
-    <BrowserRouter>
-      <Switch>
-        <Route path="/signup">
-          <Signup />
-        </Route>
-        <Route path="/login">
-          <Login />
-        </Route>
-        <Route path="/">
-          {/* <ColorModeSwitcher justifySelf="flex-end" /> */}
-          <Landing />
-        </Route>
-      </Switch>
-    </BrowserRouter>
+    <SchemaProvider value={schema}>
+      <AuthProvider schema={schema.auth}>
+        <CMSLayout />
+      </AuthProvider>
+    </SchemaProvider>
   );
 }

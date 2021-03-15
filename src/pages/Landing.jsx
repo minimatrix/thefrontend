@@ -7,9 +7,9 @@ export default function Landing() {
   return (
     <LandingLayout>
       <Hero
-        title="Freedom to create"
-        subtitle="This is where a slogan could go to sell your brand and make your product enticing to potential customers"
-        image="https://source.unsplash.com/800x600/?software-developer"
+        title="Agile Customer Feedback"
+        subtitle="Allow your customers to leave feedback and easily report bugs on any element of your React application at the click of a button."
+        image="https://source.unsplash.com/800x600/?audit"
         ctaText="Create your account now"
         ctaLink="/signup"
       />
