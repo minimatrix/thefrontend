@@ -10,7 +10,6 @@ const InputError = ({ message }) => {
 };
 
 const InputField = ({ errors, label, name, placeholder, isRequired, inputRef, isInvalid, initialRender, ...inputFieldProps }) => {
-  console.log({ inputFieldProps });
   return (
     <Box>
       <FormLabel htmlFor={name}>

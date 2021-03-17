@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 
 const useInputField = ({ label, defaultValue = undefined, type, validationRules = [], customValidator, ...props }) => {
-  console.log({ defaultValue });
   const [value, setValue] = useState(defaultValue);
   const [errors, setErrors] = useState([]);
   const [isInvalid, setIsInvalid] = useState(false);

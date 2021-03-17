@@ -12,7 +12,6 @@ const useModelIndex = ({ modelName, params }) => {
   const previousParams = usePrevious(params);
 
   const fetchData = (page = 1) => {
-    console.log({ page });
     performAPICall({
       method: 'get',
       path: modelName,

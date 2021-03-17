@@ -27,12 +27,6 @@ const Paginator = ({ currentPage, nextPage, previousPage, limit, total, onPagina
   const totalPages = Math.ceil(total / limit);
   const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
 
-  //    <<   <   1   2   3  >  >>
-
-  // <<   <   5   6
-
-  console.log({ pages });
-
   return (
     <Box d={'flex'} flexDirection={'row'}>
       {pages.map(page => {
