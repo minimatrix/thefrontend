@@ -7,11 +7,11 @@ import { UsersIndex, UsersShow } from '../../models/Users';
 export default function CMSLayout(props) {
   return (
     <>
-      <Box bg="#EEF1F7">
+      <Box bg="#EEF1F7" pt={10} height={'100vh'}>
         {/* header bar */}
-        <Flex direction="row" px={10} justifyContent="flex-end" py={5}>
+        {/* <Flex direction="row" px={10} justifyContent="flex-end" py={5}>
           <Box>Welcome back!</Box>
-        </Flex>
+        </Flex> */}
         <Flex direction="row" borderRadius="2xl" shadow="xl" bg="white" mx={10}>
           <BrowserRouter>
             <Box as={SideNavigation} shadow="xl" borderLeftRadius="xl" pt="5" />

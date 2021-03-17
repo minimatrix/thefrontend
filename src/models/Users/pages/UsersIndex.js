@@ -103,7 +103,7 @@ const UsersIndex = () => {
             <DrawerHeader borderBottomWidth="1px">Create a new user</DrawerHeader>
 
             <DrawerBody>
-              <Stack spacing="24px">
+              <Stack spacing="8px">
                 <InputField {...firstNameInput} />
                 <InputField {...lastNameInput} />
                 <InputField {...emailInput} />

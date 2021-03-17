@@ -21,7 +21,7 @@ const useInputField = ({ label, defaultValue = undefined, type, validationRules 
 
   // set value on change
   useEffect(() => {
-    validate();
+    value && validate();
   }, [value]);
 
   useEffect(() => {

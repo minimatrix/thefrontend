@@ -12,7 +12,7 @@ const InputError = ({ message }) => {
 const InputField = ({ errors, label, name, placeholder, isRequired, inputRef, isInvalid, initialRender, ...inputFieldProps }) => {
   return (
     <Box>
-      <FormLabel htmlFor={name}>
+      <FormLabel fontSize="sm" htmlFor={name}>
         {label}
         {isRequired && (
           <Text as="span" color="red.600">
@@ -20,7 +20,7 @@ const InputField = ({ errors, label, name, placeholder, isRequired, inputRef, is
           </Text>
         )}
       </FormLabel>
-      <Input ref={inputRef} name={name} placeholder={placeholder ? placeholder : label} isInvalid={isInvalid} {...inputFieldProps} />
+      <Input size={'sm'} ref={inputRef} name={name} placeholder={placeholder ? placeholder : label} isInvalid={isInvalid} {...inputFieldProps} />
       <Box mt={1}>
         {errors &&
           errors.map(e => {

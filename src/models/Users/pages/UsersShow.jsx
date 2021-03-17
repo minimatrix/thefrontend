@@ -54,6 +54,7 @@ export default function UsersShow({ id }) {
         <InputField {...lastNameInput} />
         <InputField {...emailInput} />
         <Button
+          size="sm"
           onClick={() => {
             const formIsValid =
               [firstNameInput, lastNameInput, emailInput]
