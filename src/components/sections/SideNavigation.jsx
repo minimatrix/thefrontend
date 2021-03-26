@@ -52,21 +52,13 @@ const SideNavigation = props => {
   };
 
   return (
-    <VStack
-      as="nav"
-      wrap="wrap"
-      w="140px"
-      bg={['primary.400']}
-      h="90vh"
-      pl="4"
-      color="white"
-      {...props}
-    >
+    <VStack as="nav" wrap="wrap" w="140px" bg={['primary.400']} h="90vh" pl="4" color="white" {...props}>
       <Heading as="h3" size="md" mb="10">
         LOGO
       </Heading>
 
       <MenuItem to="/dashboard">Dashboard</MenuItem>
+      <MenuItem to="/articles">Articles</MenuItem>
       <MenuItem to="/users">Users</MenuItem>
       <Box
         bg="gray.700"

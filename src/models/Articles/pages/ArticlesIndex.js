@@ -1,5 +1,5 @@
 import React from 'react';
-import useUsers from '../hooks/useUsers';
+import useArticles from '../hooks/useArticles';
 import useInputField from '../../../hooks/useInputField';
 import IndexTable from '../../../components/ui/IndexTable';
 import InputField from '../../../components/inputs/InputField';
@@ -8,37 +8,15 @@ import { Heading, Button, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, 
 
 import moment from 'moment';
 
-const UsersIndex = () => {
-  const { users, createUser, refetchIndex, pagination } = useUsers();
+const ArticlesIndex = () => {
+  const { articles, createArticle, refetchIndex, pagination } = useArticles();
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const headings = ['First Name', 'Surname', 'Email', 'Date Created'];
+  const headings = ['Name', 'Heading', 'Tags', 'Category', 'Status', 'Publish Date'];
 
-  const firstNameInput = useInputField({
-    type: 'first_name',
-    name: 'first_name',
-    label: 'First name',
-    validationRules: [
-      {
-        type: 'required',
-      },
-    ],
-  });
-
-  const lastNameInput = useInputField({
-    type: 'last_name',
-    name: 'last_name',
-    label: 'Last name',
-    validationRules: [
-      {
-        type: 'required',
-      },
-    ],
-  });
-
-  const emailInput = useInputField({
-    type: 'email',
-    name: 'email',
-    label: 'Email',
+  const nameInput = useInputField({
+    type: 'text',
+    name: 'name',
+    label: 'Name',
     validationRules: [
       {
         type: 'required',
@@ -47,14 +25,13 @@ const UsersIndex = () => {
   });
 
   const dataRows =
-    users &&
-    users.map(user => {
+    articles &&
+    articles.map(article => {
       return {
-        id: user?.id,
-        first_name: user?.first_name,
-        last_name: user?.last_name,
-        email: user?.email,
-        created_at: moment(user?.createdAt).format('DD/MM/YYYY h:m:s'),
+        id: article?.id,
+        name: article?.name,
+        heading: article?.heading,
+        published: article?.published,
       };
     });
 
@@ -62,26 +39,24 @@ const UsersIndex = () => {
     <>
       <Box d="flex" justifyContent="flex-end">
         <Button size="sm" onClick={onOpen}>
-          Create User
+          Create Article
         </Button>
       </Box>
       <Heading as="h3" size="md">
-        Users
+        Articles
       </Heading>
-      <IndexTable dataRows={dataRows} headings={headings} linkField="name" linkParam="id" route="users" />
+      <IndexTable dataRows={dataRows} headings={headings} linkField="name" linkParam="id" route="articles" />
       <Box mt="2">{pagination && <Paginator mt="2" {...pagination} onPaginate={page => refetchIndex(page)} />}</Box>
 
-      <Drawer isOpen={isOpen} placement="right" initialFocusRef={firstNameInput.inputRef} onClose={onClose}>
+      <Drawer isOpen={isOpen} placement="right" initialFocusRef={nameInput.inputRef} onClose={onClose}>
         <DrawerOverlay>
           <DrawerContent>
             <DrawerCloseButton />
-            <DrawerHeader borderBottomWidth="1px">Create a new user</DrawerHeader>
+            <DrawerHeader borderBottomWidth="1px">Create a new article</DrawerHeader>
 
             <DrawerBody>
               <Stack spacing="8px">
-                <InputField {...firstNameInput} />
-                <InputField {...lastNameInput} />
-                <InputField {...emailInput} />
+                <InputField {...nameInput} />
               </Stack>
             </DrawerBody>
 
@@ -92,18 +67,16 @@ const UsersIndex = () => {
               <Button
                 onClick={() => {
                   const formIsValid =
-                    [firstNameInput, lastNameInput, emailInput]
+                    [nameInput]
                       .map(input => {
                         return input.validate();
                       })
                       .filter(result => result == false).length < 1;
 
                   if (formIsValid) {
-                    createUser({
+                    createArticle({
                       inputs: {
-                        first_name: firstNameInput.value,
-                        last_name: lastNameInput.value,
-                        email: emailInput.value,
+                        name: nameInput.value,
                       },
                     });
                     refetchIndex();
@@ -124,4 +97,4 @@ const UsersIndex = () => {
   );
 };
 
-export default UsersIndex;
+export default ArticlesIndex;

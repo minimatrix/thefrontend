@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react';
 import { usePrevious, useAPICall } from '../hooks';
 import { createStandaloneToast } from '@chakra-ui/react';
+import { useHistory } from 'react-router-dom';
 import { singular } from 'pluralize';
 
 import axios from 'axios';
 
 const useModel = ({ modelName }) => {
+  let history = useHistory();
   const toast = createStandaloneToast();
   const singularModelName = singular(modelName);
 
@@ -21,6 +23,23 @@ const useModel = ({ modelName }) => {
       path: `${modelName}/${id}`,
       callback: response => {
         setResponse(response.data);
+      },
+    });
+
+  const deleteModelInstance = ({ id }) =>
+    performAPICall({
+      method: 'delete',
+      path: `${modelName}/${id}`,
+      callback: response => {
+        toast({
+          title: 'Success.',
+          description: `${singularModelName} was deleted successfully.`,
+          status: 'success',
+          duration: 4000,
+          isClosable: true,
+          position: 'top',
+        });
+        history.push(`/${modelName}`);
       },
     });
 
@@ -78,6 +97,7 @@ const useModel = ({ modelName }) => {
     getModelInstance,
     createModelInstance,
     updateModelInstance,
+    deleteModelInstance,
     model,
     message,
     success,

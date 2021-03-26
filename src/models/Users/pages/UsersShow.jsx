@@ -4,7 +4,7 @@ import { Box, Button, Heading } from '@chakra-ui/react';
 import InputField from '../../../components/inputs/InputField';
 
 export default function UsersShow({ id }) {
-  const { model, getModelInstance, updateModelInstance } = useModel({ modelName: 'users' });
+  const { model, getModelInstance, updateModelInstance, deleteModelInstance } = useModel({ modelName: 'users' });
 
   useEffect(() => {
     getModelInstance({ id });
@@ -69,6 +69,16 @@ export default function UsersShow({ id }) {
           }}
         >
           Save
+        </Button>
+
+        <Button
+          size="sm"
+          color="red.600"
+          onClick={() => {
+            deleteModelInstance({ id });
+          }}
+        >
+          Delete
         </Button>
       </Box>
     </Box>
