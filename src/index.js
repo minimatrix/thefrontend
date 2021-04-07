@@ -4,6 +4,7 @@ import { ChakraProvider, ColorModeScript } from '@chakra-ui/react';
 import {} from '@chakra-ui/react';
 import App from './App';
 import customTheme from './utils/theme';
+require('@openfonts/pt-sans_all');
 
 const rootElement = document.getElementById('root');
 ReactDOM.render(

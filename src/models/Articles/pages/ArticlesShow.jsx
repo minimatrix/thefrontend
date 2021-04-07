@@ -47,14 +47,14 @@ export default function ArticlesShow({ id }) {
     type: 'checkbox',
     name: 'published',
     label: 'Published',
-    defaultValue: model && model.body,
+    defaultValue: model && model.published,
   });
 
   const publishAtInput = useInputField({
-    type: 'date',
+    type: 'datetime',
     name: 'publish_at',
     label: 'Publish At',
-    defaultValue: model && model.body,
+    defaultValue: model && model.published_at,
   });
 
   return model ? (
@@ -79,7 +79,9 @@ export default function ArticlesShow({ id }) {
                 .filter(result => result == false).length < 1;
 
             if (formIsValid) {
-              updateModelInstance({ id, data: { name: nameInput.value, heading: headingInput.value, slug: slugInput, body: bodyInput, published: publishedInput, published_at: publishAtInput.value } });
+              updateModelInstance({ id, data: { name: nameInput.value, heading: headingInput.value, slug: slugInput.value, body: bodyInput.value, published: publishedInput.value, published_at: publishAtInput.value } });
+            } else {
+              alert('form not valid');
             }
           }}
         >

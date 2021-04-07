@@ -13,18 +13,24 @@ const colors = {
   //   900: '#064C2E',
   // },
   primary: {
-    100: '#C6F6D5',
-    200: '#9AE6B4',
-    300: '#68D391',
-    400: '#48BB78',
-    500: '#38A169',
-    600: '#2F855A',
-    700: '#276749',
-    800: '#22543D',
-    900: '#1C4532',
+    100: '#E9F9F9',
+    200: '#C4F3F3',
+    300: '#9CE5E6',
+    400: '#68D9DA',
+    500: '#40B9B8',
+    600: '#3EB9B8',
+    700: '#2F8C8C',
+    800: '#205D5D',
+    900: '#102F2F',
   },
 };
 
-const customTheme = extendTheme({ colors });
+const customTheme = extendTheme({
+  colors,
+  fonts: {
+    heading: 'PT Sans',
+    body: 'PT Sans',
+  },
+});
 
 export default customTheme;

@@ -8,7 +8,13 @@ const useInputField = ({ label, defaultValue = undefined, type, validationRules 
   const inputRef = useRef();
 
   const onChange = e => {
-    setValue(e.target.value);
+    switch (type) {
+      case 'checkbox':
+        setValue(e.target.checked);
+        break;
+      default:
+        setValue(e.target.value);
+    }
   };
 
   const onBlur = () => {
@@ -68,7 +74,7 @@ const useInputField = ({ label, defaultValue = undefined, type, validationRules 
 
         break;
 
-      case 'boolean':
+      case 'checkbox':
         const booleanValidation = value == true || value == false || value == 1 || value == 0 || value == 'true' || value == 'false';
         validationOutcomes.push(booleanValidation);
         break;

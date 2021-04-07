@@ -2019,6 +2019,11 @@
   dependencies:
     mkdirp "^1.0.4"
 
+"@openfonts/pt-sans_all@^1.44.2":
+  version "1.44.2"
+  resolved "https://registry.yarnpkg.com/@openfonts/pt-sans_all/-/pt-sans_all-1.44.2.tgz#c39ec98ed3e1e024bc003f5733a299eba34aa85d"
+  integrity sha512-X2Udz/GNpsvVig9k9EZn7fA4OHdsM6CimSpuYpKzA7IIO0yV6/ZZ1MovGbEmC/QEpyOhx8+XOOzzlzyPcU+6dA==
+
 "@pmmmwh/react-refresh-webpack-plugin@0.4.2":
   version "0.4.2"
   resolved "https://registry.yarnpkg.com/@pmmmwh/react-refresh-webpack-plugin/-/react-refresh-webpack-plugin-0.4.2.tgz#1f9741e0bde9790a0e13272082ed7272a083620d"

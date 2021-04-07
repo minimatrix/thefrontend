@@ -11,7 +11,7 @@ import moment from 'moment';
 const ArticlesIndex = () => {
   const { articles, createArticle, refetchIndex, pagination } = useArticles();
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const headings = ['Name', 'Heading', 'Tags', 'Category', 'Status', 'Publish Date'];
+  const headings = ['Name', 'Heading', 'Published', 'Publish Date'];
 
   const nameInput = useInputField({
     type: 'text',
@@ -26,12 +26,15 @@ const ArticlesIndex = () => {
 
   const dataRows =
     articles &&
-    articles.map(article => {
+    articles.map(a => {
+      const article = a.dataValues;
+
       return {
         id: article?.id,
         name: article?.name,
         heading: article?.heading,
-        published: article?.published,
+        published: article?.published ? 'Yes' : 'No',
+        publish_At: article?.publish_At,
       };
     });
 

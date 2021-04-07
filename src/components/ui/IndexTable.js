@@ -1,7 +1,5 @@
 import React from 'react';
-
 import { Box, Table, Tbody, Tfoot, Thead, Tr, Th, Td, Heading } from '@chakra-ui/react';
-
 import { Link } from 'react-router-dom';
 
 const IndexTable = ({ dataRows, headings, linkField, linkParam, route, ...props }) => {
@@ -22,7 +20,7 @@ const IndexTable = ({ dataRows, headings, linkField, linkParam, route, ...props 
               return (
                 <Tr>
                   {Object.keys(dataRow).map(key => {
-                    return key !== 'id' && <Td>{dataRow[linkParam] ? <Link to={`/${route}/${dataRow[linkParam]}`}>{`${dataRow[key]}`}</Link> : `${dataRow[key]}`}</Td>;
+                    return key !== 'id' && <Td>{dataRow[linkParam] ? <Link to={`/${route}/${dataRow[linkParam]}`}>{`${dataRow[key] ?? '-'}`}</Link> : `${dataRow[key] ?? '-'}`}</Td>;
                   })}
                 </Tr>
               );

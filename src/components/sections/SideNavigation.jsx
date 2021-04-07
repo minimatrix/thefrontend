@@ -2,6 +2,8 @@ import React from 'react';
 import { NavLink, Redirect, useHistory } from 'react-router-dom';
 import { Box, Flex, Text, Button, VStack, Heading } from '@chakra-ui/react';
 import { useAuth } from '../../hooks';
+import { ReactComponent as Logo } from '../../resources/images/bridgelogo_white.svg';
+
 // import Logo from '../ui/Logo';
 
 const MenuItem = ({ to, ...props }) => {
@@ -52,10 +54,14 @@ const SideNavigation = props => {
   };
 
   return (
-    <VStack as="nav" wrap="wrap" w="140px" bg={['primary.400']} h="90vh" pl="4" color="white" {...props}>
-      <Heading as="h3" size="md" mb="10">
-        LOGO
-      </Heading>
+    <VStack as="nav" wrap="wrap" w="140px" bg={['primary.500']} h="90vh" pl="4" color="white" {...props}>
+      {/* <Heading as="h3" size="md" mb="10"> */}
+      {/* <svg> */}
+      {/* <Box as="div" mx={5}> */}
+      <Logo style={{ margin: '5px' }} />
+      {/* </Box> */}
+      {/* </svg> */}
+      {/* </Heading> */}
 
       <MenuItem to="/dashboard">Dashboard</MenuItem>
       <MenuItem to="/articles">Articles</MenuItem>
