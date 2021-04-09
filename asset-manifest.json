@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.js": "/thefrontend/static/js/main.85e74f90.chunk.js",
-    "main.js.map": "/thefrontend/static/js/main.85e74f90.chunk.js.map",
-    "runtime-main.js": "/thefrontend/static/js/runtime-main.7616bbb7.js",
-    "runtime-main.js.map": "/thefrontend/static/js/runtime-main.7616bbb7.js.map",
-    "static/css/2.31b85170.chunk.css": "/thefrontend/static/css/2.31b85170.chunk.css",
-    "static/js/2.6674f8fb.chunk.js": "/thefrontend/static/js/2.6674f8fb.chunk.js",
-    "static/js/2.6674f8fb.chunk.js.map": "/thefrontend/static/js/2.6674f8fb.chunk.js.map",
-    "index.html": "/thefrontend/index.html",
-    "static/css/2.31b85170.chunk.css.map": "/thefrontend/static/css/2.31b85170.chunk.css.map",
-    "static/js/2.6674f8fb.chunk.js.LICENSE.txt": "/thefrontend/static/js/2.6674f8fb.chunk.js.LICENSE.txt",
-    "static/media/bridgelogo_white.a6bbf9d0.svg": "/thefrontend/static/media/bridgelogo_white.a6bbf9d0.svg",
-    "static/media/bridgesoftwarelogo.8f64b431.svg": "/thefrontend/static/media/bridgesoftwarelogo.8f64b431.svg",
-    "static/media/index.css": "/thefrontend/static/media/pt-sans-all-700.e9e42a91.woff"
+    "main.js": "/static/js/main.9b4c5694.chunk.js",
+    "main.js.map": "/static/js/main.9b4c5694.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.636be413.js",
+    "runtime-main.js.map": "/static/js/runtime-main.636be413.js.map",
+    "static/css/2.6ff48ce1.chunk.css": "/static/css/2.6ff48ce1.chunk.css",
+    "static/js/2.6674f8fb.chunk.js": "/static/js/2.6674f8fb.chunk.js",
+    "static/js/2.6674f8fb.chunk.js.map": "/static/js/2.6674f8fb.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/2.6ff48ce1.chunk.css.map": "/static/css/2.6ff48ce1.chunk.css.map",
+    "static/js/2.6674f8fb.chunk.js.LICENSE.txt": "/static/js/2.6674f8fb.chunk.js.LICENSE.txt",
+    "static/media/bridgelogo_white.a6bbf9d0.svg": "/static/media/bridgelogo_white.a6bbf9d0.svg",
+    "static/media/bridgesoftwarelogo.8f64b431.svg": "/static/media/bridgesoftwarelogo.8f64b431.svg",
+    "static/media/index.css": "/static/media/pt-sans-all-700.e9e42a91.woff"
   },
   "entrypoints": [
-    "static/js/runtime-main.7616bbb7.js",
-    "static/css/2.31b85170.chunk.css",
+    "static/js/runtime-main.636be413.js",
+    "static/css/2.6ff48ce1.chunk.css",
     "static/js/2.6674f8fb.chunk.js",
-    "static/js/main.85e74f90.chunk.js"
+    "static/js/main.9b4c5694.chunk.js"
   ]
 }
