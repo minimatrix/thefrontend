@@ -1,16 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import {
-  Box,
-  Button,
-  Flex,
-  Image,
-  Heading,
-  Stack,
-  Text,
-  Input,
-} from '@chakra-ui/react';
+import { Box, Button, Flex, Image, Heading, Stack, Text, Input } from '@chakra-ui/react';
 
 export default function Register({ ...props }) {
   return (
@@ -25,13 +16,7 @@ export default function Register({ ...props }) {
       {...props}
     >
       <Stack spacing={4}>
-        <Heading
-          as="h1"
-          size="xl"
-          fontWeight="bold"
-          color="primary.800"
-          textAlign={['center', 'center', 'left', 'left']}
-        >
+        <Heading as="h1" size="xl" fontWeight="bold" color="primary.600" textAlign={['center', 'center', 'left', 'left']}>
           Create your account
         </Heading>
 

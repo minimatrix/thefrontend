@@ -6,7 +6,10 @@ import Landing from '../pages/Landing';
 import Signup from '../pages/Signup';
 import Features from '../pages/Features';
 import Login from '../pages/Login';
-import HowItWorks from '../pages/HowItWorks';
+import HireDevelopers from '../pages/HireDevelopers';
+import BespokeSoftware from '../pages/BespokeSoftware';
+import Contact from '../pages/Contact';
+import About from '../pages/About';
 
 // import { ColorModeSwitcher } from './ColorModeSwitcher';
 
@@ -16,8 +19,17 @@ const UnauthedApp = () => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/how">
-          <HowItWorks />
+        <Route path="/hire-developers">
+          <HireDevelopers />
+        </Route>
+        <Route path="/bespoke-software">
+          <BespokeSoftware />
+        </Route>
+        <Route path="/contact">
+          <Contact />
+        </Route>
+        <Route path="/about">
+          <About />
         </Route>
         <Route path="/signup">
           <Signup />
@@ -56,11 +68,7 @@ const authReducer = (state, action) => {
 const AuthProvider = ({ children, schema, ...props }) => {
   const [state, dispatch] = useReducer(authReducer, authToken ? authToken : {});
 
-  return (
-    <AuthContext.Provider value={{ state, dispatch, schema }}>
-      {state.token ? children : <UnauthedApp {...props} />}
-    </AuthContext.Provider>
-  );
+  return <AuthContext.Provider value={{ state, dispatch, schema }}>{state.token ? children : <UnauthedApp {...props} />}</AuthContext.Provider>;
 };
 
 export default AuthProvider;

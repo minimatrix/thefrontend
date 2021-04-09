@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Flex, Heading, Stack, Input } from '@chakra-ui/react';
+import { Button, Flex, Heading, Stack, Input, Text } from '@chakra-ui/react';
 
 import { useLogin } from '../../hooks';
 
@@ -22,31 +22,14 @@ export default function SignIn({ ...props }) {
       {...props}
     >
       <Stack spacing={4}>
-        <Heading
-          as="h1"
-          size="xl"
-          fontWeight="bold"
-          color="primary.800"
-          textAlign={['center', 'center', 'left', 'left']}
-        >
+        <Heading as="h1" size="xl" fontWeight="bold" color="primary.600" textAlign={['center', 'center', 'left', 'left']}>
           Login
         </Heading>
 
-        <Input
-          placeholder="Email"
-          size="md"
-          autoComplete={'off'}
-          value={email}
-          onChange={e => setEmail(e.target.value)}
-        />
-        <Input
-          placeholder="Password"
-          size="md"
-          type="password"
-          value={password}
-          isInvalid={true}
-          onChange={e => setPassword(e.target.value)}
-        />
+        <Text>Login to your Bridge account to view and manage your invoices</Text>
+
+        <Input placeholder="Email" size="md" autoComplete={'off'} value={email} onChange={e => setEmail(e.target.value)} />
+        <Input placeholder="Password" size="md" type="password" value={password} onChange={e => setPassword(e.target.value)} />
 
         <Button
           size="md"
