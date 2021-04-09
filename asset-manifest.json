@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.js": "/minimatrix/thefrontend/static/js/main.b61117be.chunk.js",
-    "main.js.map": "/minimatrix/thefrontend/static/js/main.b61117be.chunk.js.map",
+    "main.js": "/minimatrix/thefrontend/static/js/main.f2ec9f56.chunk.js",
+    "main.js.map": "/minimatrix/thefrontend/static/js/main.f2ec9f56.chunk.js.map",
     "runtime-main.js": "/minimatrix/thefrontend/static/js/runtime-main.91e3186e.js",
     "runtime-main.js.map": "/minimatrix/thefrontend/static/js/runtime-main.91e3186e.js.map",
     "static/css/2.fa0d6ece.chunk.css": "/minimatrix/thefrontend/static/css/2.fa0d6ece.chunk.css",
@@ -18,6 +18,6 @@
     "static/js/runtime-main.91e3186e.js",
     "static/css/2.fa0d6ece.chunk.css",
     "static/js/2.6674f8fb.chunk.js",
-    "static/js/main.b61117be.chunk.js"
+    "static/js/main.f2ec9f56.chunk.js"
   ]
 }
