@@ -9,7 +9,7 @@ export default function About() {
         <Heading>About us</Heading>
         <Box maxWidth={300}>
           <Text mt={5}>
-            <b>The Bridge Software Ltd</b> is a new business, founded by two developers as a result of the affects of the Coronavirus Pandemic. After working together closely over the past 5 years at a software house, both Jonny and Max vowed to stick together to continue to build high quality software.
+            <b>The Bridge Software Ltd</b> is a new business, founded by two developers as a result of the affects of the Coronavirus Pandemic. After working together closely over the past 5 years at a software house, our developers decided to stick together to continue to build high quality software.
           </Text>
         </Box>
       </Flex>
