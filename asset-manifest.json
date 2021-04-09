@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.js": "/minimatrix/thefrontend/static/js/main.f2ec9f56.chunk.js",
-    "main.js.map": "/minimatrix/thefrontend/static/js/main.f2ec9f56.chunk.js.map",
-    "runtime-main.js": "/minimatrix/thefrontend/static/js/runtime-main.91e3186e.js",
-    "runtime-main.js.map": "/minimatrix/thefrontend/static/js/runtime-main.91e3186e.js.map",
-    "static/css/2.fa0d6ece.chunk.css": "/minimatrix/thefrontend/static/css/2.fa0d6ece.chunk.css",
-    "static/js/2.6674f8fb.chunk.js": "/minimatrix/thefrontend/static/js/2.6674f8fb.chunk.js",
-    "static/js/2.6674f8fb.chunk.js.map": "/minimatrix/thefrontend/static/js/2.6674f8fb.chunk.js.map",
-    "index.html": "/minimatrix/thefrontend/index.html",
-    "static/css/2.fa0d6ece.chunk.css.map": "/minimatrix/thefrontend/static/css/2.fa0d6ece.chunk.css.map",
-    "static/js/2.6674f8fb.chunk.js.LICENSE.txt": "/minimatrix/thefrontend/static/js/2.6674f8fb.chunk.js.LICENSE.txt",
-    "static/media/bridgelogo_white.a6bbf9d0.svg": "/minimatrix/thefrontend/static/media/bridgelogo_white.a6bbf9d0.svg",
-    "static/media/bridgesoftwarelogo.8f64b431.svg": "/minimatrix/thefrontend/static/media/bridgesoftwarelogo.8f64b431.svg",
-    "static/media/index.css": "/minimatrix/thefrontend/static/media/pt-sans-all-700.e9e42a91.woff"
+    "main.js": "/thefrontend/static/js/main.85e74f90.chunk.js",
+    "main.js.map": "/thefrontend/static/js/main.85e74f90.chunk.js.map",
+    "runtime-main.js": "/thefrontend/static/js/runtime-main.7616bbb7.js",
+    "runtime-main.js.map": "/thefrontend/static/js/runtime-main.7616bbb7.js.map",
+    "static/css/2.31b85170.chunk.css": "/thefrontend/static/css/2.31b85170.chunk.css",
+    "static/js/2.6674f8fb.chunk.js": "/thefrontend/static/js/2.6674f8fb.chunk.js",
+    "static/js/2.6674f8fb.chunk.js.map": "/thefrontend/static/js/2.6674f8fb.chunk.js.map",
+    "index.html": "/thefrontend/index.html",
+    "static/css/2.31b85170.chunk.css.map": "/thefrontend/static/css/2.31b85170.chunk.css.map",
+    "static/js/2.6674f8fb.chunk.js.LICENSE.txt": "/thefrontend/static/js/2.6674f8fb.chunk.js.LICENSE.txt",
+    "static/media/bridgelogo_white.a6bbf9d0.svg": "/thefrontend/static/media/bridgelogo_white.a6bbf9d0.svg",
+    "static/media/bridgesoftwarelogo.8f64b431.svg": "/thefrontend/static/media/bridgesoftwarelogo.8f64b431.svg",
+    "static/media/index.css": "/thefrontend/static/media/pt-sans-all-700.e9e42a91.woff"
   },
   "entrypoints": [
-    "static/js/runtime-main.91e3186e.js",
-    "static/css/2.fa0d6ece.chunk.css",
+    "static/js/runtime-main.7616bbb7.js",
+    "static/css/2.31b85170.chunk.css",
     "static/js/2.6674f8fb.chunk.js",
-    "static/js/main.f2ec9f56.chunk.js"
+    "static/js/main.85e74f90.chunk.js"
   ]
 }
